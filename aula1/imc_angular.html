@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html ng-app>
+<body>
+  <label>Peso <input ng-model="peso"/> kg</label><br/>
+  <label>Altura <input ng-model="altura"/> m</label><br/>
+  <div id="resultado">
+    <hr/>
+    <span>IMC: {{ peso / (altura * altura) | number }}</span>
+  </div>
+  <script src="https://code.angularjs.org/1.3.5/angular.min.js"></script>
+</body>
+</html>

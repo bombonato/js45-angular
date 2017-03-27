@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <label>Peso <input id="peso"/> kg</label><br/>
+  <label>Altura <input id="altura"/> m</label><br/>
+  <button id="botao">Calcular IMC</button>
+  <div id="resultado">
+  </div>
+  <script>
+    document.querySelector('#botao').addEventListener('click', function () {
+      var peso = document.querySelector('#peso').value;
+      var altura = document.querySelector('#altura').value;
+      var imc = peso / (altura * altura);
+      var hr = document.createElement('hr');
+      var spanIMC = document.createElement('span');
+      spanIMC.textContent = 'IMC: ' + imc;
+      var divResultado = document.querySelector('#resultado');
+      divResultado.appendChild(hr);
+      divResultado.appendChild(spanIMC);
+    });
+  </script>
+</body>
+</html>
