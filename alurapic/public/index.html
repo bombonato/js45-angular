@@ -9,13 +9,19 @@
         <script src="js/lib/angular.min.js"></script>
         <script src="js/main.js"></script>
         <script src="js/controllers/fotos-controller.js"></script>
+        <script src="js/directives/bootstrap-diretivas.js"></script>
+        <style>
+          .ng-cloak {
+            display:none;
+          }
+        </style>
     </head>
     <body ng-controller="FotosController">
         <div class="container">
             <div class="jumbotron">
                 <h1 class="text-center">Alurapic</h1>
             </div>
-            <div class="col-md-2" ng-repeat="foto in fotos">
+            <!-- <div class="col-md-2 ng-cloak" ng-repeat="foto in fotos">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title text-center">{{foto.titulo}}</h3>
@@ -24,7 +30,10 @@
                         <img class="img-responsive center-block" src="{{foto.url}}" alt="{{foto.titulo}}" />
                     </div>
                 </div>
-            </div>
-        </div> <!-- fim container -->        
+            </div> -->
+            <meu-painel class="col-md-2" titulo={{foto.titulo}} ng-repeat="foto in fotos">
+              <img class="img-responsive center-block" src="{{foto.url}}" alt="{{foto.titulo}}" />
+            </meu-painel>
+        </div> <!-- fim container -->
     </body>
 </html>
