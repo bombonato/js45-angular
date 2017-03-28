@@ -1,0 +1,18 @@
+<div class="jumbotron">
+    <h1 class="text-center">Alurapic</h1>
+</div>
+
+<!-- campo de filtragem -->
+<div class="row">
+  <div class="col-md-12">
+    <form>
+      <input ng-model="filtro" ng-model-options="{ debounce: 500 }" class="form-control" placeholder="filtrar pelo titulo da foto">
+    </form>
+  </div>
+</div>
+<div class="row">
+  <meu-painel class="col-md-2 painel-animado" titulo={{foto.titulo}} ng-repeat="foto in fotos | filter: {titulo: filtro} | orderBy: '-titulo'">
+    <!-- <img class="img-responsive center-block" src="{{foto.url}}" alt="{{foto.titulo}}" /> -->
+    <minha-foto url="{{foto.url}}" titulo="{{foto.titulo}}"></minha-foto>
+  </meu-painel>
+</div>
