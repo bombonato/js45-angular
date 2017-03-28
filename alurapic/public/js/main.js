@@ -1,1 +1,1 @@
-angular.module('alurapic', ['bootstrapDiretivas']);
+angular.module('alurapic', ['bootstrapDiretivas', 'ngAnimate']);
