@@ -1,1 +1,58 @@
-<h1>Cadastro</h1>
+<div class="page-header text-center">
+  <h1>{{foto.titulo}}</h1>
+</div>
+
+<p ng-show="mensagem.length" class="alert alert-info">{{mensagem}}</p>
+
+<form novalidate class="row" name="formulario" ng-submit="submeter()">
+  <div class="col-md-6">
+    <div class="form-group">
+      <label>Título</label>
+      <input name="titulo" class="form-control"
+            ng-model="foto.titulo" required
+            ng-maxlength="20">
+    </div>
+    <!-- Mgs de Erro para Titulo -->
+    <span ng-show="formulario.$submitted && formulario.titulo.$error.required"
+          class="form-control alert-danger">
+      Titulo Obrigatório
+    </span>
+    <span ng-show="formulario.$submitted && formulario.titulo.$error.maxlength"
+          class="form-control alert-danger">
+      No max 20 caracteres
+    </span>
+
+    <div class="form-group">
+      <label>URL</label>
+      <input name="url" type="url" class="form-control" ng-model="foto.url" required>
+    </div>
+    <!-- Mgs de Erro para URL -->
+    <span ng-show="formulario.$submitted && formulario.url.$error.required"
+          class="form-control alert-danger">
+      URL Obrigatória
+    </span>
+    <span ng-show="formulario.$submitted && formulario.url.$error.url"
+          class="form-control alert-danger">
+      URL invalida
+    </span>
+
+    <div class="form-group">
+      <label>Descrição</label>
+      <textarea name="descricao"
+                class="form-control"
+                ng-model="foto.descricao"
+                maxlength="100">
+      </textarea>
+    </div>
+
+    <button type="submit" name="button" class="btn btn-primary">
+            <!-- ng-disabled="formulario.$invalid"> -->
+      Salvar
+    </button>
+    <a href="/" class="btn">Voltar</a>
+    <hr>
+  </div>
+  <div class="col-md-6">
+    <minha-foto titulo="{{foto.titulo}}" url="{{foto.url}}"></minha-foto>
+  </div>
+</form>
