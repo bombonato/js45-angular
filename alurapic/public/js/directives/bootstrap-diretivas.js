@@ -29,4 +29,20 @@ angular.module('bootstrapDiretivas', [])
   ddo.templateUrl = 'js/directives/minha-foto.html';
 
   return ddo;
+})
+.directive('meuBotaoPerigo', function(){
+  var ddo = {};
+  //DDO - Directive Definition Object
+  ddo.restrict = "E"; //é o padrão
+
+  ddo.transclude = true;
+
+  ddo.scope = {
+    nome: '@', // @ - cópia por valor, escopo isolado, executado no contexto da diretiva
+    acao: '&' // & - passagem por referência, é uma função, será executada no controller
+  };
+
+  ddo.template = '<button class="btn btn-danger btn-block" ng-click="acao()">{{nome}}</button>';
+
+  return ddo;
 });

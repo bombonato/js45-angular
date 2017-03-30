@@ -26,15 +26,7 @@
       <label>URL</label>
       <input name="url" type="url" class="form-control" ng-model="foto.url" required>
     </div>
-    <!-- Mgs de Erro para URL -->
-    <!-- <span ng-show="formulario.$submitted && formulario.url.$error.required"
-          class="form-control alert-danger">
-      URL Obrigatória
-    </span>
-    <span ng-show="formulario.$submitted && formulario.url.$error.url"
-          class="form-control alert-danger">
-      URL invalida
-    </span> -->
+
     <div class="form-control alert-danger"
           ng-show="formulario.url.$dirty"
           ng-messages="formulario.url.$error" ng-messages-multiple>
@@ -49,6 +41,22 @@
                 ng-model="foto.descricao"
                 maxlength="100">
       </textarea>
+    </div>
+
+    <div class="form-group">
+      <label>Grupo</label>
+      <!-- ng-options: pega o id mas exibe o nome, percorrendo a lista
+        de grupos disponibilizada no escopo do controller -->
+      <select class="form-control" required name="grupo"
+              ng-model="foto.grupo"
+              ng-controller="GruposController"
+              ng-options="grupo._id as (grupo.nome | uppercase) for grupo in grupos">
+        <option value="">Ecolha um grupo</option>
+      </select>
+      <span ng-show="formulario.$submitted && formulario.grupo.$error.required"
+            class="form-control alert-danger">
+            Grupo obrigatório
+      </span>
     </div>
 
     <button type="submit" name="button" class="btn btn-primary">
