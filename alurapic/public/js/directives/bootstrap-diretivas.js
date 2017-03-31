@@ -51,19 +51,14 @@ angular.module('bootstrapDiretivas', [])
   //DDO - Directive Definition Object
   ddo.restrict = "A"; // Atributo
 
-  ddo.scope = {
-    focado : '='
-  };
+  // ddo.scope = {
+  //   focado : '='
+  // };
 
   ddo.link = function (scope, element) {
-    scope.$watch('focado', function() {
-      console.log("camou a func do watch")
-      if(scope.focado) {
-        console.log("disparando alteracao")
+    scope.$on('fotoCadastrada', function() {
         var elementDOM = element[0];
         elementDOM.focus();
-        scope.focado = false;
-      }
     });
   };
 

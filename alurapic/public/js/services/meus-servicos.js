@@ -6,7 +6,9 @@ angular.module('meusServicos', ['ngResource'])
             }
           });
         })
-        .service('cadastroDeFotos', function (recursoFoto, $q) {
+        .service('cadastroDeFotos', function (recursoFoto, $q, $rootScope) {
+          var evento = 'fotoCadastrada'; //Cap11.7
+
           this.listar = function() {
             return $q(function (resolve, reject) {
                 recursoFoto.query(function(fotos){
@@ -28,6 +30,7 @@ angular.module('meusServicos', ['ngResource'])
 
                   recursoFoto.update( {fotoId: foto._id}, foto, function() {
                       console.log("Foto alterada");
+                      $rootScope.$broadcast(evento); //Cap11.7
                       resolve({
                         mensagem : 'Foto ' + foto.titulo + ' alterada com sucesso',
                         inclusao: false
