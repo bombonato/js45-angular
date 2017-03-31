@@ -46,6 +46,8 @@ angular
       cadastroDeFotos.cadastrar($scope.foto)
         .then( function(dados) {
           $scope.mensagem = dados.mensagem;
+          // $scope.focado = true; //cap11
+          
           if(dados.inclusao) {
             $scope.foto = {};
             $scope.formulario.$setUntouched();

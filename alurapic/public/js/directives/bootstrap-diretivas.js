@@ -45,4 +45,27 @@ angular.module('bootstrapDiretivas', [])
   ddo.template = '<button class="btn btn-danger btn-block" ng-click="acao()">{{nome}}</button>';
 
   return ddo;
+})
+.directive('trf1Foco', function(){ //CamelCase, no html é "trf1-foco"
+  var ddo = {};
+  //DDO - Directive Definition Object
+  ddo.restrict = "A"; // Atributo
+
+  ddo.scope = {
+    focado : '='
+  };
+
+  ddo.link = function (scope, element) {
+    scope.$watch('focado', function() {
+      console.log("camou a func do watch")
+      if(scope.focado) {
+        console.log("disparando alteracao")
+        var elementDOM = element[0];
+        elementDOM.focus();
+        scope.focado = false;
+      }
+    });
+  };
+
+  return ddo;
 });
