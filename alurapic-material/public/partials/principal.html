@@ -1,17 +1,54 @@
 <div layout="column">
   <md-toolbar md-whiteframe>
     <div class="md-toolbar-tools">
-      <h2>Alurapic Material</h2>
+      <h2 flex>Alurapic Material</h2>
+      <md-button class="md-icon-button" aria-label="Filtro" md-no-ink
+        ng-click="mostraFiltro = true">
+        <md-icon md-svg-icon="filtrar"></md-icon>
+      </md-button>
+      <div class="search-bar" ng-show="mostraFiltro" layout="row" layout-align="end center">
+        <md-input-container>
+          <label>Filtro</label>
+          <input type="search" ng-model="filtro">
+        </md-input-container>
+        <md-button class="md-icon-button" aria-label="Fechar filtro" md-no-ink
+          ng-click="mostraFiltro = false">
+            <md-icon md-svg-icon="fechar"></md-icon>
+          </md-button>
+      </div>
     </div>
-    <md-content>
-      <md-grid-list md-cols="1" md-cols-sm="2" md-cols-gt-sm="3" md-row-height="4:3" md-gutter="8px">
+  </md-toolbar>
+    <md-content layout="column" layout-gt-xs="row" layout-align-gt-xs="space-around start"
+      ng-class="{'layout-wrap': fazWrap}">
+      <!-- <md-grid-list md-cols="1" md-cols-sm="2" md-cols-gt-sm="3" md-row-height="4:3" md-gutter="8px">
         <md-grid-tile ng-repeat="foto in fotos">
           <img ng-src="{{foto.url}}" alt="{{foto.titulo}}" />
           <md-grid-tile-footer>
             <h3>{{foto.titulo}}</h3>
           </md-grid-title-footer>
         </md-grid-tile>
-      </md-grid-list>
+      </md-grid-list> -->
+
+      <md-card ng-repeat="foto in fotos | filter: {titulo: filtro}" flex-gt-xs= "30">
+        <img src="{{foto.url}}" class="md-card-image" alt="{{foto.titulo}}" />
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">{{foto.titulo}}</span>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+          <p>{{foto.descricao}}</p>
+        </md-card-content>
+        <md-card-actions>
+          <md-card-icon-actions layout-align="end center">
+            <md-button class="md-icon-button" ng-href="/fotos/edit/{{foto._id}}" aria-label="Editar Foto">
+              <md-icon md-svg-icon"editar"></md-icon>
+            </md-button>
+            <md-button class="md-icon-button" ng-link="remover(foto)" aria-label="Remover Foto">
+              <md-icon md-svg-icon"remover"></md-icon>
+            </md-button>
+          </md-card-icon-actions>
+        </md-card-actions>
+      </md-card>
     </md-content>
-  </md-toolbar>
 </div>

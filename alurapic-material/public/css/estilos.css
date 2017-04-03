@@ -7,10 +7,21 @@ md-grid-list md-grid-title md-grid-title-footer {
 md-grid-list md-grid-title md-grid-title-footer h3 {
   font-weight: bold;
 }
-
 md-card md-icon svg {
   opacity: 0.26; /* inativo */
 }
 md-card md-icon:hover svg {
   opacity: 0.54; /* ativo */
+}
+.search-bar .md-erros-spacer {
+  display: none;
+}
+.search-bar md-input-container input, .search-bar md-input-container label {
+  color: rgba(255, 255, 255, 0.54);
+}
+.search-bar md-input-container input {
+  border-bottom-color: white
+}
+.search-bar md-input-container.md-input-has-value label {
+  display: none;
 }

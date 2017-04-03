@@ -1,6 +1,6 @@
 angular
   .module('alurapic')
-  .controller('FotosController', function($scope, recursoFoto) {
+  .controller('FotosController', function($scope, recursoFoto, $mdMedia) {
     recursoFoto.query(function(fotos) {
         $scope.fotos = fotos;
       }, function(erro) {
@@ -16,4 +16,9 @@ angular
           $scope.mensagem = 'Não foi possível apagar a foto ' + foto.titulo;
         });
     }
+    $scope.$watch(function() {
+      return $mdMedia('gt-xs'); },
+      function(fazWrap) {
+        $scope.fazWrap = fazWrap;
+      });
 });
